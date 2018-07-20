@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ONLYBUY | ログインページ</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<center><h1><font size="7">ONLYBUY</font></h1></center>
+<center>
+<h2>ログイン情報入力</h2>
+<form method="post" action="mypage" >
+{% csrf_token %}
+<table>
+{{ form }}
+</table>
+<br>
+<input type="submit" value="ログイン" />
+</form>
+</center>
+</body>
+</html>

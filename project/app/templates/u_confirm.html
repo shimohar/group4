@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ONLYBUY | 登録内容の確認</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<center><h1><font size="7">ONLYBUY</font></h1></center>
+<center>
+<h4>確認</h4>
+以下の内容でよろしいですか？<br>
+Userid.Password.<br>
+<table>
+<tr>
+{% for field in form %}
+<td>{{ field.value }}.</td>
+{% endfor %}
+</tr>
+</table>
+<form method="post" action="uresult">
+{% csrf_token %}
+<input type="submit" value="確定"/>
+</form>
+</center>
+</body>
+</html>

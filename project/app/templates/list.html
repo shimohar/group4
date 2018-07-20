@@ -1,0 +1,41 @@
+{% load staticfiles %}
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ONLYBUY | 食材一覧</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<center><h1><font size="7">ONLYBUY</font></h1></center>
+<center><h4>食材一覧</h4>
+<br>
+<table border="1">
+<tr>
+  <th>name</th>
+  <th>best-before</th>
+</tr>
+{% for Material in materials %}
+<tr>
+  <td>{{ Material.name }}</td>
+  <td>{{ Material.best_before }}</td>
+</tr>
+{% endfor %}
+</table>
+<br><br><br>
+				<div class="inner">
+					<ul class="col4">
+						<li>
+							<a href="{% url 'input' %}"><p class="img"><img src="{% static 'images/input2.JPG' %}" width="168" height="168" alt=""></p></a>
+							<center><p>食材の登録</p></center>
+						</li>
+						<li>
+							<a href="{% url 'delete' %}"><p class="img"><img src="{% static 'images/delete.JPG' %}" width="168" height="168" alt=""></p></a>
+							<center><p>食材の削除</p></center>
+						</li>
+					</ul>
+				</div>
+<br>
+<a href="mypage">マイページ</a>
+</center>
+</body>
+</html>
