@@ -11,11 +11,13 @@
 <br>
 <table border="1">
 <tr>
+  <th>id</th>
   <th>name</th>
   <th>best-before</th>
 </tr>
 {% for Material in materials %}
 <tr>
+  <td>{{ Material.id }}</td>
   <td>{{ Material.name }}</td>
   <td>{{ Material.best_before }}</td>
 </tr>
@@ -29,7 +31,7 @@
 							<center><p>食材の登録</p></center>
 						</li>
 						<li>
-							<a href="{% url 'delete' %}"><p class="img"><img src="{% static 'images/delete.JPG' %}" width="168" height="168" alt=""></p></a>
+							<a href="{% url 'dview' %}"><p class="img"><img src="{% static 'images/delete.JPG' %}" width="168" height="168" alt=""></p></a>
 							<center><p>食材の削除</p></center>
 						</li>
 					</ul>

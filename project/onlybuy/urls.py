@@ -30,5 +30,6 @@ urlpatterns = [
     url(r'^app/delete$',views.delete,name='delete'),
     url(r'^app/execute$',views.execute,name='execute'),
     url(r'^app/list$',views.MaterialListView.as_view(),name='list'),
-    url(r'',views.index_page,name='index'),
+    url(r'^app/dview$',views.dview,name='dview'),
+    url(r'^app/dconfirm$',views.dconfirm,name='dconfirm'),
 ]

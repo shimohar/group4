@@ -5,6 +5,7 @@ from app.forms import LoginForm
 from app.forms import UserForm
 from app.models import Material
 from app.forms import MaterialForm
+from app.forms import DeleteForm
 # Create your views here.
 def top_page(request):
     return render(request,'top.html')
@@ -112,12 +113,24 @@ class MaterialListView(ListView):
     model=Material
     context_object_name='materials'
 
+def dview(request):
+    form = DeleteForm
+    return render(request,'d_view.html',{'form':form})
+
+def dconfirm(request):
+    form=DeleteForm(request.POST)
+    if not form.is_valid():
+        return render(request,'d_view.html',{'form':form})
+    id=form.cleaned_data['id']
+    object=Material.objects.all().filter(id=id)
+    if len(object)==0:
+        return render(request,'d_view.html',{'form':form,'message':'登録されていないIDです'})
+    request.session['d_id']=id
+    return render(request,'d_confirm.html',{'name':object[0].name,'best_before':object[0].best_before})
+
 def delete(request):
-    materials = Material.objects.all()
-    def score_key(material):
-        return material.best_before
-    materials = sorted(materials,key=score_key,reverse=False)
-    material_name = materials[0].name
-    material = Material.objects.get(name=material_name)
+    d_id=request.session['d_id']
+    request.session.flush()
+    material = Material.objects.get(id=d_id)
     del_count,del_material=material.delete()
     return render(request,'d_execute.html')

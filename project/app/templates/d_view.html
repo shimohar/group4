@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ONLYBUY | 食材一覧</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<center><h1><font size="7">ONLYBUY</font></h1></center>
+<center><h4>削除する食材のIDを指定してください</h4>
+<br>
+<form method="post" action="dconfirm">
+{% csrf_token %}
+<font color=red>{{ message }}</font><br>
+{{ form.id }} <input type="submit" value="削除"/>
+</form>
+<a href="list">戻る</a>
+</center>
+</body>
+</html>

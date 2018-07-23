@@ -76,8 +76,18 @@ WSGI_APPLICATION = 'onlybuy.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'onlybuy', # DB名を設定
+        'USER': 'root', # DBへ接続するユーザIDを設定
+        'PASSWORD': 'password', # DBへ接続するユーザIDのパスワードを設定
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
+        'TEST': {
+            'NAME': 'test_sample'
+        }
     }
 }
 

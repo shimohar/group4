@@ -15,3 +15,6 @@ class MaterialForm(forms.ModelForm):
     class Meta:
         model=Material
         fields=('name','best_before')
+
+class DeleteForm(forms.Form):
+    id=forms.IntegerField(required=True)

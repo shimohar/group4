@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ONLYBUY | 登録内容の確認</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<center><h1><font size="7">ONLYBUY</font></h1></center>
+<center>
+<h4>確認</h4>
+以下の食材を削除します<br>
+<table>
+<font color=yellow>
+食材名:{{ name }}<br>
+賞味期限:{{ best_before}}<br>
+</font>
+</table>
+<form method="post" action="delete">
+{% csrf_token %}
+<input type="submit" value="確定"/><br>
+<a href="dconfirm">戻る</a>
+</form>
+</center>
+</body>
+</html>
