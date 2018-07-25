@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models.fields import DateField
+from django.db.models.fields import IntegerField
 # Create your models here.
 class User(models.Model):
     Userid=models.CharField(max_length=16)
@@ -7,6 +7,6 @@ class User(models.Model):
 
 class Material(models.Model):
     name=models.CharField(max_length=256)
-    best_before=DateField()
+    best_before=IntegerField()
     def __str__(self):
         return '({}, {})'.format(self.name, self.best_before)
