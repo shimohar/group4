@@ -78,13 +78,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'onlybuy3', # DB名を設定
-        'USER': '', # DBへ接続するユーザIDを設定
-        'PASSWORD': '', # DBへ接続するユーザIDのパスワードを設定
-        'HOST': '',
+        'USER': 'hirakawa@mysql-server-60133525', # DBへ接続するユーザIDを設定
+        'PASSWORD': 'Group4password', # DBへ接続するユーザIDのパスワードを設定
+        'HOST': 'mysql-server-60133525.mysql.database.azure.com',
         'PORT': '3306',
         'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
+            'ssl': {
+                'ca': os.path.join(BASE_DIR, 'certs/BaltimoreCyberTrustRoot.crt.pem')
+            }
+        }
     }
 }
 
